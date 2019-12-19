@@ -10,6 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: build 
+    - uses: docker://python:alpine
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_HUB: ${{ secrets.DOCKER_HUB }}
@@ -18,7 +19,7 @@ jobs:
         echo "Docker login"
         docker login -u $DOCKER_USERNAME -p $DOCKER_HUB
         echo "Running build"
-        docker build -t pavelinux/devops:$(date +%s) ../../
+        docker build . --file Dockerfile -t pavelinux/devops:$(date +%s) 
         echo "Pushing image"
         docker push paveliunx/devops:$(date +%s)
         echo "Finished!"
