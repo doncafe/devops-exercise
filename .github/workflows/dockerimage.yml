@@ -10,7 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: build 
-    - uses: docker://python:alpine
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_HUB: ${{ secrets.DOCKER_HUB }}
