@@ -18,7 +18,7 @@ jobs:
         echo "Docker login"
         docker login -u $DOCKER_USERNAME -p $DOCKER_HUB
         echo "Running build"
-        docker build . --file Dockerfile -t pavelinux/devops:$(date +%s)
+        docker build . --file Dockerfile -t pavelinux/devops:latest
         echo "Pushing image"
-        docker push pavelinux/devops:$(date +%s)
+        docker push pavelinux/devops:latest
         echo "Finished!"
